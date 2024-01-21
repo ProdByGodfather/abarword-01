@@ -28,35 +28,36 @@ Abarword
 
                     <div class="tabs__content-pane tabs__content-pane--active" id="tab-all">
                         <div class="row card-row">
+                            {% for i in posts %}
                             <div class="col-md-4">
                                 <article class="entry card">
                                     <div class="entry__img-holder card__img-holder">
-                                        <a href="single-post.html">
+                                        <a href="{% url 'post' i.id %}">
                                             <div class="thumb-container thumb-70">
-                                                <img data-src="img/content/thumb/post-8.jpg" src="img/content/thumb/post-8.jpg" class="entry__img lazyloaded" alt="">
+                                                <img data-src="img/content/thumb/post-8.jpg" src="{{ i.image.url }}" class="entry__img lazyloaded" alt="">
                                             </div>
                                         </a>
-                                        <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">موبایل و گجت</a>
+                                        <a href="" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{ i.category.title }}</a>
                                     </div>
 
                                     <div class="entry__body card__body">
                                         <div class="entry__header">
 
                                             <h2 class="entry__title">
-                                                <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
+                                                <a href="{% url 'post' i.id %}">{{ i.title }}</a>
                                             </h2>
                                             <ul class="entry__meta">
                                                 <li class="entry__meta-author">
                                                     <span>نویسنده:</span>
-                                                    <a href="#">بهرامی راد</a>
+                                                    <a href="#">{{ i.author }}</a>
                                                 </li>
                                                 <li class="entry__meta-date">
-                                                    ۴ اردیبهشت ۱۳۹۸
+                                                    {{ i.create_time }}
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="entry__excerpt">
-                                            <p>عد از اعلام تصمیم سامسونگ برای به عقب انداختن عرضه گلکسی فولد، شایعاتی مبنی بر احتمال تاخیر در عرضه ...</p>
+                                            <p>{{ i.description }}</p>
                                         </div>
                                     </div>
                                     
@@ -64,6 +65,7 @@ Abarword
                                 </article>
                             </div>
                             
+                            {% endfor %}
                             
                             
                         </div>

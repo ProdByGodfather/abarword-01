@@ -301,9 +301,13 @@
                     <ul class="newsticker__list" style="height: 34px; overflow: hidden;">
                         
                         
-                        
-                    <li class="newsticker__item" style="margin-top: 0px;"><a href="single-post.html" class="newsticker__item-url">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a></li><li class="newsticker__item" style="margin-top: 0px;"><a href="single-post-1.html" class="newsticker__item-url">لنوو Z6 پرو با دوربین چهارگانه و اسنپ‌دراگون ۸۵۵ معرفی شد</a></li><li class="newsticker__item" style="margin-top: 0px;"><a href="single-post-3.html" class="newsticker__item-url">سامسونگ مشغول ساخت دو گوشی تاشو جدید است</a></li></ul>
-                </div>
+                    {% for i in news %}
+                    <li class="newsticker__item" style="margin-top: 0px;"><a href="single-post.html" class="newsticker__item-url">{{ i.text }}</a></li>
+                    
+                    {% endfor %}
+                    
+                </ul>
+                        </div>
                 <div class="newsticker-buttons">
                     <button class="newsticker-button newsticker-button--next" id="newsticker-button--next" aria-label="previous article"><i class="ui-arrow-left"></i></button>
                     <button class="newsticker-button newsticker-button--prev" id="newsticker-button--prev" aria-label="next article"><i class="ui-arrow-right"></i></button>
@@ -362,56 +366,33 @@
                             <aside class="widget widget-popular-posts">
                                 <h4 class="widget-title">محبوب ترین مقالات</h4>
                                 <ul class="post-list-small">
-                                    <li class="post-list-small__item">
-                                        <article class="post-list-small__entry clearfix">
-                                            <div class="post-list-small__img-holder">
-                                                <div class="thumb-container thumb-100">
-                                                    <a href="single-post.html">
-                                                        <img data-src="img/content/thumb/post-8.jpg" src="img/content/thumb/post-8.jpg" alt="" class="post-list-small__img--rounded lazyloaded">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="post-list-small__body">
-                                                <h3 class="post-list-small__entry-title">
-                                                    <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
-                                                </h3>
-                                                <ul class="entry__meta">
-                                                    <li class="entry__meta-author">
-                                                        <span>نویسنده:</span>
-                                                        <a href="#">بهرامی راد</a>
-                                                    </li>
-                                                    <li class="entry__meta-date">
-                                                        ۴ اردیبهشت ۱۳۹۸
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </article>
+                                    {% for i in posts_best %}
+                    <li class="post-list-small__item">
+                        <article class="post-list-small__entry clearfix">
+                            <div class="post-list-small__img-holder">
+                                <div class="thumb-container thumb-100">
+                                    <a href="{% url 'post' i.id %}">
+                                        <img data-src="img/content/thumb/post-8.jpg" src="{{ i.image.url }}" alt="" class="post-list-small__img--rounded lazyloaded">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post-list-small__body">
+                                <h3 class="post-list-small__entry-title">
+                                    <a href="{% url 'post' i.id %}">{{ i.title }}</a>
+                                </h3>
+                                <ul class="entry__meta">
+                                    <li class="entry__meta-author">
+                                        <span>نویسنده:</span>
+                                        <a href="#">{{ i.author }}</a>
                                     </li>
-                                    <li class="post-list-small__item">
-                                        <article class="post-list-small__entry clearfix">
-                                            <div class="post-list-small__img-holder">
-                                                <div class="thumb-container thumb-100">
-                                                    <a href="single-post.html">
-                                                        <img data-src="img/content/thumb/post-2.jpg" src="img/content/thumb/post-2.jpg" alt="" class="post-list-small__img--rounded lazyloaded">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="post-list-small__body">
-                                                <h3 class="post-list-small__entry-title">
-                                                    <a href="single-post.html">نمایشگر وان پلاس ۷ قرار است ما را شگفت‌زده کند!</a>
-                                                </h3>
-                                                <ul class="entry__meta">
-                                                    <li class="entry__meta-author">
-                                                        <span>نویسنده:</span>
-                                                        <a href="#">بهرامی راد</a>
-                                                    </li>
-                                                    <li class="entry__meta-date">
-                                                        ۴ اردیبهشت ۱۳۹۸
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </article>
+                                    <li class="entry__meta-date">
+                                        {{ i.create_time }}
                                     </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                    {% endfor %}
                                 </ul>
                             </aside>
                         </div>
