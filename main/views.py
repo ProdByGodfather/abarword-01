@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from main.models import Post
+from main.models import Post, Contact
+# import messages in django contrib
+from django.contrib import messages
 
 def home(request):
     post = Post.objects.all().filter(best=True)
@@ -17,22 +19,21 @@ def post(request,id):
     return render(request,"single.html",context)
 
 
-def category(reqest,slug):
+def category(request,slug):
     posts = Post.objects.all().filter(category__slug = slug)
     context = {
         'posts':posts,
         "category": slug
     }
-    return render(reqest, "category.html", context)
+    return render(request, "category.html", context)
 
-def contact(reqest):
-    context = {'message':None}
-    if reqest.method == "POST":
-        title = reqest.POST.get('title')
-        email = reqest.POST.get('email')
-        message = reqest.POST.get('message')
+def contact(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
         print(title, email, message)
-        Post.objects.create(title=title, email=email, message=message)
-        context = {'message':"اطلاعات ذخیره شدند"}
-    return render(reqest, 'contact.html',context)
+        Contact.objects.create(title=title, email=email, message=message)
+        messages.info(request, 'پیغام شما با موفقیت ذخیره شد.')
+    return render(request, 'contact.html')
 

@@ -22,9 +22,19 @@
         <h1 class="page-title">تماس با ما</h1>
 
        
-
+        
         <div class="row justify-content-center">
             <div class="col-lg-8">
+                {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <div class="alert alert-success">
+                                <strong>{% if message.tags %}{{ message.tags }}!{% endif %}</strong> {{ message }}
+                              </div>
+                            
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                 <h4>با ما تماس بگیرید</h4>
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
                 <ul class="contact-items">
@@ -53,9 +63,8 @@
 
                     <input type="submit" class="btn btn-lg btn-color btn-button" value="فرستادن" id="submit-message">
                     <button type="submit">ارسال</button>
-                    <div id="msg" class="message">{% if message %}
-                        <p>message</p>
-                    {% endif %}</div>
+                    <div id="msg" class="message">
+                        </div>
                 </form>
                 
             </div>
