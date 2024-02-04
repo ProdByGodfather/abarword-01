@@ -17,3 +17,4 @@ class NewView(admin.ModelAdmin):
 admin.site.register(models.Category)
 admin.site.register(models.Post,PostView)
 admin.site.register(models.New,NewView)
+admin.site.register(models.Contact)

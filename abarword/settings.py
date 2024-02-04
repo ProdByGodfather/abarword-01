@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'django_quill',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'main.contextprocessor.base',
                 'main.contextprocessor.best_post_2',
+                'main.contextprocessor.category_show'
             ],
         },
     },

@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Abarword
+    دسته بندی مقالات
 {% endblock %}
 
+
+
 {% block content %}
-<br><br>
-<div class="container">
+
+<br>
+<div class="containter">
     
 <div class=" blog__content">
 
     <!-- Latest News -->
     <section class="section tab-post mb-16">
         <div class="title-wrap title-wrap--line">
-            <h3 class="section-title">آخرین عنوان ها</h3>
+            <h3 class="section-title">دسته بندی بر اساس {{ category.title }}</h3>
 
             
         </div>
@@ -72,6 +75,6 @@ Abarword
 </div>
 </div>
 
-
-
 {% endblock %}
+
+

@@ -34,7 +34,7 @@
                 <article class="entry mb-0">
 
                     <div class="single-post__entry-header entry__header">
-                        <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--green">موبایل و گجت</a>
+                        <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--green">{{ post.category.title }}</a>
                         <h1 class="single-post__entry-title">
                             {{ post.title }}
                         </h1>
@@ -63,7 +63,7 @@
 
                         
                         <div class="entry__article">
-                            <p>{{ post.body }}</p>
+                            <p>{{ post.body.html|safe }}</p>
                         </div> <!-- end entry article -->
                     </div> <!-- end entry article wrap -->
 
